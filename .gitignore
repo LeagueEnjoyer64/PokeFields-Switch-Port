@@ -1,0 +1,25 @@
+# Never publish player data or console/development secrets.
+roms/
+dados/
+user_data/
+.godot/
+*.nds
+*.gba
+*.gbc
+*.gb
+*.sav
+*.srm
+*.keys
+prod.keys
+title.keys
+dev_key.txt
+*credentials*
+*session*
+*.log
+*.nro
+*.pck
+*.nsp
+*.xci
+*.mp4
+*.download
+*.next

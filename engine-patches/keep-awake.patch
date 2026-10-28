@@ -1,13 +1,20 @@
-diff --git a/platform/switch/os_switch.cpp b/platform/switch/os_switch.cpp
 --- a/platform/switch/os_switch.cpp
 +++ b/platform/switch/os_switch.cpp
-@@ -326,2 +326,5 @@ void OS_Switch::run() {
+@@ -327,6 +327,9 @@
+ 	// nunca os tinha)
+ 	acelerar(false);
  	main_loop->initialize();
 +	// Keep the console awake during play and remote maintenance. Manual sleep remains available.
 +	const Result keep_awake_result = appletSetAutoSleepDisabled(true);
 +	printf("[switch] auto-sleep disabled: 0x%x\n", keep_awake_result);
  	AppletHookCookie gancho;
-@@ -432,2 +435,3 @@ void OS_Switch::run() {
+ 	appletHook(&gancho, _hook_do_applet, this);
+ 	const Result r_foco = appletSetFocusHandlingMode(AppletFocusHandlingMode_SuspendHomeSleepNotify);
+@@ -430,6 +433,7 @@
+ 		static_cast<DisplayServerSwitch *>(DisplayServer::get_singleton())->avisar_janela(DisplayServerEnums::WINDOW_EVENT_CLOSE_REQUEST);
+ 	}
  	appletUnhook(&gancho);
 +	appletSetAutoSleepDisabled(false);
- 	// o modo de foco volta ao padr„o da libnx (o processo segue vivo no carregador, com o prÛximo .nro)
+ 	// o modo de foco volta ao padr√£o da libnx (o processo segue vivo no carregador, com o pr√≥ximo .nro)
+ 	appletSetFocusHandlingMode(AppletFocusHandlingMode_SuspendHomeSleep);
+ 	if (com_sentinela) {

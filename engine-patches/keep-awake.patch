@@ -1,0 +1,13 @@
+diff --git a/platform/switch/os_switch.cpp b/platform/switch/os_switch.cpp
+--- a/platform/switch/os_switch.cpp
++++ b/platform/switch/os_switch.cpp
+@@ -326,2 +326,5 @@ void OS_Switch::run() {
+ 	main_loop->initialize();
++	// Keep the console awake during play and remote maintenance. Manual sleep remains available.
++	const Result keep_awake_result = appletSetAutoSleepDisabled(true);
++	printf("[switch] auto-sleep disabled: 0x%x\n", keep_awake_result);
+ 	AppletHookCookie gancho;
+@@ -432,2 +435,3 @@ void OS_Switch::run() {
+ 	appletUnhook(&gancho);
++	appletSetAutoSleepDisabled(false);
+ 	// o modo de foco volta ao padrão da libnx (o processo segue vivo no carregador, com o próximo .nro)

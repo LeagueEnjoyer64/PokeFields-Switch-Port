@@ -4,6 +4,8 @@ An unofficial Nintendo Switch homebrew port of [PokeFields](https://pokefields.c
 
 **Status:** Rev. 47 integration and the Switch updater are in development. There is no tested public release yet. A release will only appear here after verification; the source ZIP is not an installable Switch application.
 
+The port-specific updater source is in [`switch/`](switch/). Its release format and integration requirements are documented in [UPDATER.md](UPDATER.md).
+
 ## Install a tested release
 
 These instructions apply when a tested release is available on the [Releases page](https://github.com/LeagueEnjoyer64/PokeFields-Switch-Port/releases).
@@ -31,6 +33,8 @@ No ROMs, account credentials, saved sessions, saves, console keys, private devel
 - **Godot Engine contributors** — the underlying engine: [godotengine/godot](https://github.com/godotengine/godot), MIT licensed. Engine license and third-party notices must accompany engine distributions.
 - **devkitPro and libnx contributors** — the Switch homebrew toolchain and platform libraries: [devkitPro](https://devkitpro.org/) and [libnx](https://github.com/switchbrew/libnx).
 - **GDRE Tools contributors** — client recovery tooling used during compatibility investigation: [GDRETools/gdsdecomp](https://github.com/GDRETools/gdsdecomp). This is a development tool, not an included game dependency.
+- **Mozilla NSS contributors and the curl project** � the updater uses Mozilla's public CA root certificates, distributed through [curl's CA Extract service](https://curl.se/docs/caextract.html). The bundle retains its source and date header. TLS certificate and hostname checks remain enabled.
+- **Stary2001 and cpasjuste** � earlier Godot Switch port work credited by the engine port's source.
 - **Nintendo, Game Freak and Creatures** — Pokémon and the original games referenced by this project belong to their respective rights holders. This project supplies no game ROMs.
 
 Additional incorporated sources and their notices will be added before release. No blanket license is assigned to upstream game code or assets; their respective owners retain their rights. Only material with appropriate redistribution rights should be published.
